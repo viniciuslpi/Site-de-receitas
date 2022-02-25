@@ -1,10 +1,10 @@
 import { ReceitasComponent } from './../receitas/receitas.component';
-import { Meal, MealAPI } from './../models/receita.model';
+import { Meal } from './../models/receita.model';
 import { CrudService } from '../services/crud.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { merge, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
