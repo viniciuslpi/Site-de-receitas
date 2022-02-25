@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   form = this.formBuilder.group({
     search: ''
   })
-  search: string;
+  search: '';
 
   constructor(
     private crudService: CrudService,
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
     const inputData = this.form.controls['search'].value;
-    this.recipes = this.crudService.getSearchRecipe(this.form.controls['search'].value);
+    this.recipes = this.crudService.getSearchRecipe(inputData);
     if(inputData !== null || inputData !== undefined) this.search = inputData;
     this.form.reset();
   }

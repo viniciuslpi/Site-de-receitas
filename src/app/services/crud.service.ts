@@ -13,11 +13,9 @@ export class CrudService {
   constructor(private http: HttpClient) { }
 
   getSearchRecipe(search?: string) {
-    console.log(search)
     const getUrl = `${URL}${search || ''}`;
     return this.http.get<MealAPI>(getUrl)
         .pipe(
-          tap(console.log),
           pluck('meals'),
           map((data: RecipeAPI) => {
             return data.map((recipeItem: MealAPI) => {
