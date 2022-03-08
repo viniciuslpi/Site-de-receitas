@@ -23,7 +23,8 @@ export class CrudService {
               return recipe;
             })
           }, (err: any) => {
-            console.log('Error: ', err)
+            console.log('Error: ', err);
+            return null;
           }
           )
         )

@@ -1,7 +1,7 @@
 import { ReceitasComponent } from './../receitas/receitas.component';
 import { Meal } from './../models/receita.model';
 import { CrudService } from '../services/crud.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 
-export class HomeComponent implements OnInit {
+export class HomeComponent{
 
   recipes: Observable<Meal[]>;
   erro: any;
@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
     search: ''
   })
   search: '';
+  isActive: boolean;
 
   constructor(
     private crudService: CrudService,
@@ -34,7 +35,7 @@ export class HomeComponent implements OnInit {
   onSubmit() {
     const inputData = this.form.controls['search'].value;
     this.recipes = this.crudService.getSearchRecipe(inputData);
-    if(inputData !== null || inputData !== undefined) this.search = inputData;
+    this.recipes === null ? this.isActive = true: this.isActive = false;
     this.form.reset();
   }
 
@@ -46,5 +47,6 @@ export class HomeComponent implements OnInit {
     modalRef.componentInstance.instructions = recipe.instructions;
     modalRef.componentInstance.linkVideo = recipe.youtube;
   }
+
 
 }
